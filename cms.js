@@ -7,13 +7,20 @@
         Tabletop.init({
             key: URI,
             simpleSheet: true,
-            orderby: 'year',
             callback: function(shows){
-                let content = '';
+                let grid = document.getElementById('events-grid');
+                let sampleRow = grid.innerHTML;
+                let gridHtml = '';
                 for(let show of shows){
-                    content += show.name + ' at ' + show.location + ' on ' + show.year + ' for ' + show.price + '<br>';
+                    let currentRow = document.createElement('div');
+                    currentRow.innerHTML = sampleRow;
+                    currentRow.getElementsByClassName('event-name')[0].innerHTML = show.name;
+                    currentRow.getElementsByClassName('event-place')[0].innerHTML = show.place;
+                    currentRow.getElementsByClassName('event-date')[0].innerHTML = show.date;
+                    gridHtml += currentRow.innerHTML;
                 }
-                document.getElementsByTagName('body')[0].innerHTML = content;
+                console.log(gridHtml);
+                grid.innerHTML = gridHtml;
             }
         });
     });
