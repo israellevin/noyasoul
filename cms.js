@@ -7,10 +7,11 @@
         Tabletop.init({
             key: URI,
             simpleSheet: true,
+            orderby: 'year',
             callback: function(shows){
                 let content = '';
                 for(let show of shows){
-                    content += show.name + ' at ' + show.location + ' on ' + show.date + ' for ' + show.price + '<br>';
+                    content += show.name + ' at ' + show.location + ' on ' + show.year + ' for ' + show.price + '<br>';
                 }
                 document.getElementsByTagName('body')[0].innerHTML = content;
             }
